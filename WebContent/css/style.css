@@ -1,0 +1,56 @@
+@charset "UTF-8";
+#msgBox, .error {
+	color: red;
+}
+
+.list_user {
+	font-size: 12px;
+}
+
+.glyphicon {
+	float: right;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.glyphicon-triangle-top {
+	display: none;
+}
+
+.form-group{
+    border-top: 1px solid #eeeeee;
+    padding-top: 10px;
+}
+
+.selectTag {
+    height: 34px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 270px;
+}
+
+#rdNu {
+	margin-left: 30px;
+}
+
+span.glyphicon.glyphicon-calendar {
+    line-height: 32px;
+    font-size: 26px;
+    color: #b9b3b3;
+    position: absolute;
+    right: 16px;
+}
+
+.input-datepicker {
+    width: 270px;
+    height: 34px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 10px;
+}
+
+img {
+	width: 45px; 
+	height: 25px;
+}
