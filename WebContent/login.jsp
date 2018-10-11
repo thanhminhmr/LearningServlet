@@ -17,6 +17,7 @@
 		</div>
 		<div class="login-box-body">
 			<form action="/login" method="post">
+				<input type="hidden" name="redirectUrl" value="<c:url value="${redirectUrl}" />" />
 				<c:if test="${isError}">
 					<div class="alert alert-warning alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

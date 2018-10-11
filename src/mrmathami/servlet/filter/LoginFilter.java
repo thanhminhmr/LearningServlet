@@ -48,9 +48,7 @@ public class LoginFilter implements Filter {
 			return;
 		}
 
-		session.setAttribute("redirectUrl", request.getRequestURI());
-		System.out.println(request.getRequestURI());
-		response.sendRedirect("/login");
+		response.sendRedirect("/login?redirectUrl=" + request.getRequestURI());
 	}
 
 	/**
