@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class LoginController
  */
-@WebServlet("")
-public class HomeController extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public HomeController() {
+	public LogoutController() {
 		super();
 	}
 
@@ -25,7 +25,8 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/home.jsp").forward(request, response);
+		request.getSession().removeAttribute("user");
+		response.sendRedirect("/");
 	}
 
 	/**

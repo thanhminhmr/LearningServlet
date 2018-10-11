@@ -1,23 +1,27 @@
 package mrmathami.servlet.controller;
 
+import mrmathami.servlet.model.dao.Users;
+import mrmathami.servlet.model.data.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class LoginController
  */
-@WebServlet("")
-public class HomeController extends HttpServlet {
+@WebServlet("/user/list")
+public class UserListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public HomeController() {
+	public UserListController() {
 		super();
 	}
 
@@ -25,7 +29,9 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/home.jsp").forward(request, response);
+		ArrayList<User> users = Users.getUsers();
+		request.setAttribute("users", users);
+		request.getRequestDispatcher("/user.list.jsp").forward(request, response);
 	}
 
 	/**

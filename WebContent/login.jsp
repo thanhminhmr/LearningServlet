@@ -2,45 +2,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<jsp:include page="_linkTag.jsp">
+<jsp:include page="_header.jsp">
 	<jsp:param name="title" value="Login" />
 </jsp:include>
 </head>
-<body>
-	<div class="login">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
-					<h2 align="center">Đăng nhập</h2>
-					<form action="login" method="post">
-						<div class="form-group">
-							<label>Tài khoản</label>
-							<input class="form-control" id="txtUser" type="text" name="username" placeholder="Tên đăng nhập" onblur="checkUser()" value="<c:out value="${typedUsername}"/>">
-							<span id="msgUser"></span>
-						</div>
 
-						<div class="form-group">
-							<label>Mật khẩu</label>
-							<input class="form-control" id="txtPassword" type="password" name="password" placeholder="Mật khẩu" onblur="checkPassword()">
-							<span id="msgBox">
-								<c:choose>
-									<c:when test="${isLoginFailed}">Tài khoản hoặc Mật khẩu không đúng.</c:when>
-									<c:when test="${isEmptyUsernamePassword}">Tài khoản và Mật khẩu không được để trống.</c:when>
-								</c:choose>
-							</span>
-						</div>
-
-						<div class="button text-center">
-							<button type="submit" class="btn btn-primary" onclick="return validateFormLogin()">Đăng nhập</button>
-							<button type="reset" class="btn btn-default">Đặt lại</button>
-						</div>
-					</form>
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<b>Learning</b>
+			Servlet
+		</div>
+		<div class="login-box-body">
+			<form action="/login" method="post">
+				<c:if test="${isError}">
+					<div class="alert alert-warning alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<c:choose>
+							<c:when test="${isFailed}">Sai tên tài khoản hoặc mật khẩu.</c:when>
+							<c:when test="${isEmpty}">Tên tài khoản và mật khẩu không được bỏ trống.</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" placeholder="Tên tài khoản" name="username" value="<c:out value="${targetUsername}" />">
+					<span class="form-control-feedback">
+						<i class="fa fa-user"></i>
+					</span>
 				</div>
-
-			</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+					<span class="form-control-feedback">
+						<i class="fa fa-lock"></i>
+					</span>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+			</form>
 		</div>
 	</div>
+	<jsp:include page="_scripts.jsp" />
 </body>
+
 </html>
